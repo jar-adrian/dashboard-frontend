@@ -1,0 +1,16 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.recharts-legend-item-text,
+.recharts-tooltip-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.recharts-default-legend {
+    margin-top: 1rem;
+    text-align: center;
+}
