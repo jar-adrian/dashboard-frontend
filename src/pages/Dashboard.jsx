@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import EstadisticasChart from "../components/EstadisticasChart";
-import EncuestaForm from "../components/EncuestaForm";
 import { materias } from "../data/mockData";
 
 const Dashboard = () => {
