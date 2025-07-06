@@ -3,16 +3,33 @@ import { useForm } from 'react-hook-form';
 
 const EncuestaForm = ({ materia }) => {
     const { register, handleSubmit, reset, watch } = useForm();
-    const estado = watch("estado"); // observar el campo estado
+    const estado = watch("estado");
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const respuesta = {
             materia: materia?.nombre || "Sin materia",
             ...data,
         };
-        console.log("Encuesta enviada:", respuesta);
-        alert(`¡Gracias por responder sobre ${respuesta.materia}!`);
-        reset();
+
+        try {
+            const response = await fetch("http://localhost:8080/api/encuestas", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(respuesta)
+            });
+
+            if (response.ok) {
+                alert(`¡Gracias por responder sobre ${respuesta.materia}!`);
+                reset();
+            } else {
+                alert("Ocurrió un error al enviar la encuesta.");
+            }
+        } catch (error) {
+            console.error("Error al enviar la encuesta:", error);
+            alert("No se pudo conectar con el servidor.");
+        }
     };
 
     return (
