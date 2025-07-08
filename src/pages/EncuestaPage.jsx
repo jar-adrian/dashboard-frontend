@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { materias } from "../data/mockData";
+import { materias } from "../data/mockData_Elmiminar";
 import EncuestaForm from "../components/EncuestaForm";
 
 const EncuestaPage = () => {

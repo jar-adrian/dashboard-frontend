@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
 import EncuestaPage from './pages/EncuestaPage';
+import EstadisticasDashboard from './pages/EstadisticasDashboard'; // <- CAMBIO
 
 function App() {
     return (
@@ -13,8 +13,8 @@ function App() {
 
                 <Routes>
                     <Route path="/encuesta" element={<EncuestaPage />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="*" element={<EncuestaPage />} /> {/* ruta por defecto */}
+                    <Route path="/dashboard" element={<EstadisticasDashboard />} /> {/* <- CAMBIO */}
+                    <Route path="*" element={<EncuestaPage />} />
                 </Routes>
             </div>
         </Router>

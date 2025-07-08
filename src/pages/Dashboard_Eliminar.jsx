@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import EstadisticasChart from "../components/EstadisticasChart";
-import { materias } from "../data/mockData";
+import { materias } from "../data/mockData_Elmiminar";
 
-const Dashboard = () => {
+const Dashboard_Eliminar = () => {
     const [materiaSeleccionada, setMateriaSeleccionada] = useState(materias[0]);
 
     const handleChange = (e) => {
@@ -27,4 +27,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Dashboard_Eliminar;

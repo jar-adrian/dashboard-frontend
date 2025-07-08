@@ -38,14 +38,14 @@ const EncuestaForm = ({ materia }) => {
 
             <label>¿Cuál es tu estado actual en la materia?</label>
             <div className="radios">
-                <label><input type="radio" value="aprobado" {...register("estado")} required /> Aprobado</label>
-                <label><input type="radio" value="desaprobado" {...register("estado")} /> Desaprobado</label>
-                <label><input type="radio" value="desertor" {...register("estado")} /> Desertor</label>
+                <label><input type="radio" value="APROBADO" {...register("estado")} required /> Aprobado</label>
+                <label><input type="radio" value="DESAPROBADO" {...register("estado")} /> Desaprobado</label>
+                <label><input type="radio" value="DESERTOR" {...register("estado")} /> Desertor</label>
             </div>
 
             {estado && (
                 <>
-                    {estado !== "aprobado" ? (
+                    {estado !== "APROBADO" ? (
                         <>
                             <label>Motivo principal de tu situación:</label>
                             <select {...register("motivo")} required>
