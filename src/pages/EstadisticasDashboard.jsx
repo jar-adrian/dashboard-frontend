@@ -10,16 +10,16 @@ const EstadisticasDashboard = () => {
     useEffect(() => {
         const obtenerDatos = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/estadisticas");
+                const response = await fetch("http://localhost:8080/api/estadisticas/estado");
                 if (!response.ok) throw new Error("Error al obtener estadísticas");
 
                 const data = await response.json();
 
-                // Convertimos el formato para el gráfico
-                const datosTransformados = data.map(item => ({
-                    name: item.estado,
-                    value: item.cantidad
-                }));
+                const datosTransformados = [
+                    { name: "Aprobados", value: data.aprobados },
+                    { name: "Desaprobados", value: data.desaprobados },
+                    { name: "Desertores", value: data.desertores }
+                ];
 
                 setEstadisticas(datosTransformados);
             } catch (err) {
