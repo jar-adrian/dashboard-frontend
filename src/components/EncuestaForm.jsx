@@ -12,13 +12,17 @@ const EncuestaForm = ({ materia }) => {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/encuestas", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(respuesta)
-            });
+            const response = await fetch(
+                // "http://localhost:8080/api/encuestas",
+                "http://192.168.100.53:8080/api/encuestas",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(respuesta)
+                }
+            );
 
             if (response.ok) {
                 alert(`¡Gracias por responder sobre ${respuesta.materia}!`);

@@ -11,13 +11,14 @@ const EstadisticasDashboard = () => {
     const [filtroEstado, setFiltroEstado] = useState("todos");
     const [filtroMateria, setFiltroMateria] = useState("todas");
 
-    // Obtener datos al montar el componente
     useEffect(() => {
         const obtenerDatos = async () => {
             try {
                 const [resEstadisticas, resEncuestas] = await Promise.all([
-                    fetch("http://localhost:8080/api/estadisticas/estado"),
-                    fetch("http://localhost:8080/api/encuestas")
+                    // fetch("http://localhost:8080/api/estadisticas/estado"),
+                    fetch("http://192.168.100.53:8080/api/estadisticas/estado"),
+                    // fetch("http://localhost:8080/api/encuestas")
+                    fetch("http://192.168.100.53:8080/api/encuestas")
                 ]);
 
                 if (!resEstadisticas.ok || !resEncuestas.ok)
@@ -44,10 +45,8 @@ const EstadisticasDashboard = () => {
         obtenerDatos();
     }, []);
 
-    // Obtener las materias únicas desde los datos
     const materiasUnicas = [...new Set(encuestas.map(e => e.materia))];
 
-    // Filtro aplicado a las encuestas
     const encuestasFiltradas = encuestas.filter(encuesta => {
         const coincideEstado =
             filtroEstado === "todos" || encuesta.estado === filtroEstado;
@@ -60,7 +59,6 @@ const EstadisticasDashboard = () => {
         <div>
             <h2>Estadísticas Generales</h2>
 
-            {/* Selector de tipo de gráfico */}
             <label htmlFor="tipo">Tipo de gráfico: </label>
             <select
                 id="tipo"
@@ -72,7 +70,6 @@ const EstadisticasDashboard = () => {
                 <option value="lineas">Gráfico de Líneas</option>
             </select>
 
-            {/* Filtros */}
             <div style={{ marginTop: "1rem" }}>
                 <label htmlFor="estado">Filtrar por estado: </label>
                 <select
@@ -103,19 +100,15 @@ const EstadisticasDashboard = () => {
                 </select>
             </div>
 
-            {/* Indicadores */}
             {cargando && <p>Cargando datos...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
 
-            {/* Gráfico y tabla */}
             {!cargando && !error && (
                 <>
                     <EstadisticasChart data={estadisticas} tipo={tipoGrafico} />
-
                     <p style={{ marginTop: "1rem" }}>
                         Mostrando {encuestasFiltradas.length} encuestas
                     </p>
-
                     <EncuestasTabla encuestas={encuestasFiltradas} />
                 </>
             )}

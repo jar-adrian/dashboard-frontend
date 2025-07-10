@@ -22,7 +22,7 @@ const EncuestasTabla = ({ encuestas }) => {
                         <td>{encuesta.motivo}</td>
                         <td>{encuesta.materia}</td>
                         <td>{encuesta.claridad}</td>
-                        <td>{encuesta.comentario}</td>
+                        <td>{encuesta.comentarios}</td>
                     </tr>
                 ))}
                 </tbody>
